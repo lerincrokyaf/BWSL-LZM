@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>訂單確認成功 | 三立新聞網 SETN.COM</title>
+<!-- FB Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1926503831320795');
+fbq('init','1711620506696632');
+fbq('track','PageView');
+fbq('track','Purchase',{value:1398,currency:'TWD'});
+</script>
+<!-- 防右鍵 + 防快捷鍵 -->
+<script>
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+document.addEventListener('keydown',function(e){
+  if(e.key==='F12'){e.preventDefault();return false;}
+  if(e.ctrlKey&&(e.key==='u'||e.key==='U')){e.preventDefault();return false;}
+  if(e.ctrlKey&&(e.key==='s'||e.key==='S')){e.preventDefault();return false;}
+  if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c')){e.preventDefault();return false;}
+});
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Microsoft JhengHei','PingFang TC','Noto Sans TC',sans-serif;background:#f5f5f5;color:#222;font-size:16px;}
+
+/* ===== 三立導航外殼 ===== */
+.setn-topbar{background:#003580;color:#fff;font-size:12px;padding:4px 12px;display:flex;align-items:center;gap:12px;overflow:hidden;}
+.setn-topbar a{color:#fff;text-decoration:none;white-space:nowrap;font-size:11px;}
+.setn-topbar a:hover{text-decoration:underline;}
+.setn-topbar .spacer{flex:1;}
+
+.setn-header{background:#fff;border-bottom:3px solid #e8001c;padding:8px 16px;display:flex;align-items:center;gap:12px;}
+.setn-logo{font-size:28px;font-weight:900;color:#e8001c;letter-spacing:-1px;font-style:italic;}
+.setn-logo span{color:#003580;}
+.setn-live{background:#e8001c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;margin-left:4px;animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.setn-search{flex:1;max-width:240px;display:flex;border:1px solid #ccc;border-radius:3px;overflow:hidden;}
+.setn-search input{flex:1;padding:5px 8px;font-size:13px;border:none;outline:none;}
+.setn-search button{background:#003580;color:#fff;border:none;padding:5px 10px;cursor:pointer;font-size:13px;}
+.setn-login{background:#e8001c;color:#fff;border:none;padding:5px 12px;border-radius:3px;font-size:12px;cursor:pointer;white-space:nowrap;}
+
+.setn-nav{background:#003580;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;}
+.setn-nav::-webkit-scrollbar{display:none;}
+.setn-nav a{display:inline-block;color:#fff;text-decoration:none;padding:9px 14px;font-size:13px;font-weight:500;}
+.setn-nav a:hover,.setn-nav a.active{background:#e8001c;}
+
+/* ===== 麵包屑 ===== */
+.breadcrumb{background:#fff;padding:8px 16px;font-size:12px;color:#888;border-bottom:1px solid #eee;}
+.breadcrumb a{color:#003580;text-decoration:none;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb span{margin:0 4px;}
+
+/* ===== 主內容 ===== */
+.article-wrap{max-width:680px;margin:0 auto;padding:20px 16px 60px;}
+
+/* ===== 成功卡片 ===== */
+.success-card{background:#fff;border-radius:12px;padding:40px 24px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,0.08);margin-bottom:24px;}
+.success-icon{font-size:72px;margin-bottom:16px;animation:pop 0.5s ease;}
+@keyframes pop{0%{transform:scale(0);}80%{transform:scale(1.15);}100%{transform:scale(1);}}
+.success-title{font-size:26px;font-weight:900;color:#1a7a3c;margin-bottom:8px;}
+.success-subtitle{font-size:16px;color:#555;line-height:1.7;margin-bottom:24px;}
+.success-subtitle strong{color:#e8001c;}
+
+.info-box{background:#f0f9f4;border:2px solid #1a7a3c;border-radius:8px;padding:20px;text-align:left;margin-bottom:20px;}
+.info-box h3{font-size:16px;font-weight:700;color:#1a7a3c;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+.info-step{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
+.info-step:last-child{margin-bottom:0;}
+.step-num{background:#1a7a3c;color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.step-text{font-size:14px;color:#333;line-height:1.6;}
+.step-text strong{color:#1a7a3c;}
+
+.notice-box{background:#fff8e1;border:1px solid #ffc107;border-radius:8px;padding:16px;font-size:13px;color:#7a5c00;line-height:1.7;margin-bottom:20px;}
+.notice-box strong{color:#e65c00;}
+
+.privacy-note{font-size:12px;color:#999;text-align:center;line-height:1.6;}
+
+.order-summary{background:#f9f9f9;border:1px solid #e0e0e0;border-radius:8px;padding:16px;margin-bottom:20px;text-align:left;}
+.order-row{display:flex;align-items:center;gap:14px;}
+.order-img{width:80px;height:80px;object-fit:contain;border-radius:6px;background:#fff;border:1px solid #eee;flex-shrink:0;}
+.order-info{flex:1;}
+.order-name{font-size:17px;font-weight:900;color:#1a1a1a;margin-bottom:4px;}
+.order-desc{font-size:12px;color:#888;margin-bottom:6px;}
+.order-price{margin-bottom:4px;}
+.order-tag{font-size:12px;color:#1a7a3c;font-weight:600;}
+
+/* ===== 頁尾 ===== */
+.setn-footer{background:#1a1a2e;color:#aaa;padding:24px 16px;font-size:12px;text-align:center;line-height:2;}
+.setn-footer a{color:#aaa;text-decoration:none;margin:0 8px;}
+.setn-footer a:hover{color:#fff;}
+.setn-footer .footer-logo{font-size:20px;font-weight:900;color:#e8001c;font-style:italic;margin-bottom:8px;}
+.setn-footer .footer-logo span{color:#fff;}
+
+/* ===== RWD ===== */
+@media(max-width:480px){
+  .setn-topbar{display:none;}
+  .setn-search{max-width:160px;}
+  .success-card{padding:30px 16px;}
+  .success-icon{font-size:56px;}
+  .success-title{font-size:22px;}
+}
+</style>
+</head>
+<body>
+
+<!-- 三立頂部工具欄 -->
+<div class="setn-topbar">
+  <a href="#">APP下載</a>
+  <a href="#">活動</a>
+  <a href="#">爆料</a>
+  <a href="#">圖輯</a>
+  <a href="#">阿立導讀</a>
+  <a href="#">追蹤新聞</a>
+  <div class="spacer"></div>
+</div>
+
+<!-- 三立主導航 -->
+<div class="setn-header">
+  <div class="setn-logo">1<span>SET</span>N<span class="setn-live">直播</span></div>
+  <div style="font-size:13px;color:#003580;font-weight:700;margin-right:4px;">三立新聞網</div>
+  <div class="setn-search">
+    <input type="text" placeholder="輸入文字">
+    <button>🔍</button>
+  </div>
+  <button class="setn-login">登入</button>
+</div>
+<nav class="setn-nav">
+  <a href="#">即時</a>
+  <a href="#">新聞</a>
+  <a href="#">影音</a>
+  <a href="#">熱搜</a>
+  <a href="#">直播</a>
+  <a href="#">iNEWS</a>
+  <a href="#">專題</a>
+  <a class="active" href="#">生活</a>
+  <a href="#">健康</a>
+  <a href="#">彩券</a>
+  <a href="#">★ 專欄</a>
+</nav>
+
+<!-- 麵包屑 -->
+<div class="breadcrumb">
+  <a href="#">三立新聞網</a><span>›</span>
+  <a href="#">生活</a><span>›</span>
+  <span>訂單確認</span>
+</div>
+
+<!-- 主內容 -->
+<div class="article-wrap">
+
+  <!-- 成功卡片 -->
+  <div class="success-card">
+    <div class="success-icon">✅</div>
+    <div class="success-title">下單成功！</div>
+    <div class="success-subtitle">
+      感謝您的信任。<br>
+      客服將於 <strong>24 小時內</strong> 與您聯繫確認訂單。
+    </div>
+
+    <!-- 訂單摘要 -->
+    <div class="order-summary">
+      <div class="order-row">
+        <img src="product_main.jpg" alt="霸王養精蓄力丹" class="order-img" onerror="this.style.display='none'">
+        <div class="order-info">
+          <div class="order-name">霸王養精蓄力丹</div>
+          <div class="order-desc">台灣男性微循環活力專用・純漢方配方</div>
+          <div class="order-price">NT$ <s style="color:#aaa;font-size:14px;">2,778</s> &nbsp;<strong style="color:#e8001c;font-size:20px;">1,398</strong> 元</div>
+          <div class="order-tag">✓ 貨到付款　✓ 密封包裝</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 流程說明 -->
+    <div class="info-box">
+      <h3>📋 接下來的流程</h3>
+      <div class="info-step">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>等待客服聯繫</strong><br>客服將於 24 小時內以電話與您確認訂單內容。</div>
+      </div>
+      <div class="info-step">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>確認收件資訊</strong><br>請保持電話暢通，以便客服確認收件地址。</div>
+      </div>
+      <div class="info-step">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>貨到付款</strong><br>收到包裹後再付款，安心又方便。</div>
+      </div>
+      <div class="info-step">
+        <div class="step-num">4</div>
+        <div class="step-text"><strong>開始使用</strong><br>按照說明書建議方式使用，效果最佳。</div>
+      </div>
+    </div>
+
+    <!-- 注意事項 -->
+    <div class="notice-box">
+      ⚠️ <strong>溫馨提醒：</strong>包裹採用<strong>密封無標識包裝</strong>寄送，外觀不顯示任何產品資訊，請放心收取。
+    </div>
+
+    <div class="privacy-note">🔒 您的個人資料受到嚴格保護，僅用於本次訂單確認，不會用於其他用途。</div>
+  </div>
+
+</div>
+
+<!-- 頁尾 -->
+<footer class="setn-footer">
+  <div class="footer-logo">1<span>SET</span>N</div>
+  <div>
+    <a href="#">三立官網</a>
+    <a href="#">關於三立</a>
+    <a href="#">關於三立新聞網</a>
+    <a href="#">隱私權聲明</a>
+    <a href="#">三立新聞網自律守則</a>
+  </div>
+  <div style="margin-top:8px;">Copyright ©2026 Sanlih E-Television All Rights Reserved 版權所有 盜用必究</div>
+  <div style="margin-top:4px;font-size:11px;color:#666;">本頁面內容不代表三立新聞網立場。</div>
+</footer>
+
+</body>
+</html>
